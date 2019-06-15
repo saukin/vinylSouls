@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ca.concordia.cejv659/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://ca.concordia.cejv659/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Albums service for CEJV559.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ca.concordia.cejv659/">
+      <s:element name="GetAlbumData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="upc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlbumDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlbumDataResult" type="tns:Album" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Album">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Upc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlbumName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PressingYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Artist" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Instructions">
+        <s:complexType />
+      </s:element>
+      <s:element name="InstructionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InstructionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConditionsCollection">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetConditionsCollectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConditionsCollectionResult" type="tns:AlbumConditions" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AlbumConditions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AlbumConditionList" type="tns:ArrayOfAlbumCondition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAlbumCondition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AlbumCondition" nillable="true" type="tns:AlbumCondition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AlbumCondition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetListOfConditions">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetListOfConditionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListOfConditionsResult" type="tns:ArrayOfAlbumCondition" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAlbumDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlbumData" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlbumDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="InstructionsSoapIn">
+    <wsdl:part name="parameters" element="tns:Instructions" />
+  </wsdl:message>
+  <wsdl:message name="InstructionsSoapOut">
+    <wsdl:part name="parameters" element="tns:InstructionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConditionsCollectionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConditionsCollection" />
+  </wsdl:message>
+  <wsdl:message name="GetConditionsCollectionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConditionsCollectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfConditionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListOfConditions" />
+  </wsdl:message>
+  <wsdl:message name="GetListOfConditionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListOfConditionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AlbumServiceSoap">
+    <wsdl:operation name="GetAlbumData">
+      <wsdl:input message="tns:GetAlbumDataSoapIn" />
+      <wsdl:output message="tns:GetAlbumDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Instructions">
+      <wsdl:input message="tns:InstructionsSoapIn" />
+      <wsdl:output message="tns:InstructionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConditionsCollection">
+      <wsdl:input message="tns:GetConditionsCollectionSoapIn" />
+      <wsdl:output message="tns:GetConditionsCollectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfConditions">
+      <wsdl:input message="tns:GetListOfConditionsSoapIn" />
+      <wsdl:output message="tns:GetListOfConditionsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AlbumServiceSoap" type="tns:AlbumServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlbumData">
+      <soap:operation soapAction="http://ca.concordia.cejv659/GetAlbumData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Instructions">
+      <soap:operation soapAction="http://ca.concordia.cejv659/Instructions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConditionsCollection">
+      <soap:operation soapAction="http://ca.concordia.cejv659/GetConditionsCollection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfConditions">
+      <soap:operation soapAction="http://ca.concordia.cejv659/GetListOfConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AlbumServiceSoap12" type="tns:AlbumServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAlbumData">
+      <soap12:operation soapAction="http://ca.concordia.cejv659/GetAlbumData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Instructions">
+      <soap12:operation soapAction="http://ca.concordia.cejv659/Instructions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConditionsCollection">
+      <soap12:operation soapAction="http://ca.concordia.cejv659/GetConditionsCollection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListOfConditions">
+      <soap12:operation soapAction="http://ca.concordia.cejv659/GetListOfConditions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AlbumService">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Albums service for CEJV559.</wsdl:documentation>
+    <wsdl:port name="AlbumServiceSoap" binding="tns:AlbumServiceSoap">
+      <soap:address location="http://webservices.brendanwood.me/AlbumService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AlbumServiceSoap12" binding="tns:AlbumServiceSoap12">
+      <soap12:address location="http://webservices.brendanwood.me/AlbumService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

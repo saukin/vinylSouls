@@ -103,11 +103,11 @@ public class xs_webservice {
     @GET  
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Album> getAlbumByUpcAndUserId(@PathParam("user_id") String user_id, @PathParam("upc") String upc) throws SQLException {
+    public List<Album> getAlbumByUpcAndUserId(@PathParam("upc") String upc, @PathParam("user_id") String user_id) throws SQLException {
         
         AlbumsDAO ad = new AlbumsDAO();
         
-        List<Album> albums = ad.getAlbumByUpcAndUserId(user_id,upc);
+        List<Album> albums = ad.getAlbumByUpcAndUserId(upc , user_id);
         
         return albums;
     }

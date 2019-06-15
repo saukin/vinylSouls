@@ -37,7 +37,7 @@ public abstract class ParentDAO {
     protected final String getAlbumsByUpcAndUserIdQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE user_ownership = ? AND active = true AND (upc_code =? OR album_name=?)";
     protected final String getAlbumsByArtistQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE artist_group =?";
     protected final String getAlbumsQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE active = true";
-    protected final String getAlbumByIdQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE entry = ?";
+    protected final String getAlbumByEntryQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE entry = ?";
     protected final String countAlbumsByUserIdChoiceActive = "SELECT COUNT(*) FROM appalbums WHERE user_ownership = ? AND active = ?";
     
     protected final String deleteAlbumQuery = "UPDATE appalbums SET active = false WHERE entry = ?";

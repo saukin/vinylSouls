@@ -66,7 +66,7 @@ public class AlbumsDAO extends ParentDAO {
             System.out.println(e);
         }
         
-        return getAlbum(a.getUpc_code());
+        return getAlbumByEntry(String.valueOf(a.getEntry()));
     }
     
     public List<Album> getAlbumsByUserId(int i, boolean active) throws SQLException {
@@ -184,13 +184,13 @@ public class AlbumsDAO extends ParentDAO {
     }
     
     
-    public List<Album> getAlbumByUpcAndUserId(String user_id, String upc) throws SQLException {
+    public List<Album> getAlbumByUpcAndUserId(String upc, String user_id) throws SQLException {
        
         List<Album> rows = new ArrayList<>(); 
         
         try(Connection connection = DriverManager.getConnection(url, user, password);) {
                 PreparedStatement albumStatement = connection.prepareStatement(getAlbumsByUpcAndUserIdQuery);
-                albumStatement.setString(1, user_id);
+                albumStatement.setInt(1, Integer.parseInt(user_id));
                 albumStatement.setString(2, upc);
                 albumStatement.setString(3, upc);
                 
@@ -225,7 +225,7 @@ public class AlbumsDAO extends ParentDAO {
     public Album getAlbumByEntry(String entry) throws SQLException {
         
        try(Connection connection = DriverManager.getConnection(url, user, password);) {
-                PreparedStatement pStatement = connection.prepareStatement(getAlbumByIdQuery);
+                PreparedStatement pStatement = connection.prepareStatement(getAlbumByEntryQuery);
                 pStatement.setString(1, entry);
                 
                 
