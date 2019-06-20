@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xs.project.service;
+package xs.project.services;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -29,7 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(xs.project.service.xs_webservice.class);
+        resources.add(xs.project.services.BrendanService.class);
+        resources.add(xs.project.services.xs_webservice.class);
     }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xs.project.service;
+package xs.project.services;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

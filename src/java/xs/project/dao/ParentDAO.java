@@ -38,7 +38,7 @@ public abstract class ParentDAO {
     protected final String getAlbumsByArtistQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE artist_group =?";
     protected final String getAlbumsQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE active = true";
     protected final String getAlbumByEntryQuery = "SELECT entry, album_name, upc_code, pressing_year, artist_group, condition_state, notes, user_ownership, active FROM appalbums WHERE entry = ?";
-    protected final String countAlbumsByUserIdChoiceActive = "SELECT COUNT(*) FROM appalbums WHERE user_ownership = ? AND active = ?";
+    protected final String countAlbumsByUserId = "SELECT COUNT(*) FROM appalbums WHERE user_ownership = ? AND active = ?";
     
     protected final String deleteAlbumQuery = "UPDATE appalbums SET active = false WHERE entry = ?";
     protected final String restoreAlbumQuery = "UPDATE appalbums SET active = true WHERE entry = ?";
@@ -59,13 +59,13 @@ public abstract class ParentDAO {
         return a;
     }
 
-    protected User createUserFromResult(ResultSet r) throws SQLException {
-        User u = new User();
-        u.setUser_id(r.getInt("USER_ID"));
-        u.setEmail(r.getString("EMAIL"));
-        u.setPassword(r.getString("PASSWORD"));
-        return u;
-    }
+//    protected User createUserFromResult(ResultSet r) throws SQLException {
+//        User u = new User();
+//        u.setUser_id(r.getInt("USER_ID"));
+//        u.setEmail(r.getString("EMAIL"));
+//        u.setPassword(r.getString("PASSWORD"));
+//        return u;
+//    }
     
     
 //    protected Album createAlbumFromResultAndUser(ResultSet r, Album a, User u) throws SQLException {

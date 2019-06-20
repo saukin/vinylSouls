@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="UpcService">
-      <implementation-class>xs.upcclient.UpcService</implementation-class>
-      <wsdl-url>http://webservices.brendanwood.me/AlbumService.asmx?WSDL</wsdl-url>
-      <local-wsdl-file>webservices.brendanwood.me/AlbumService.asmx.wsdl</local-wsdl-file>
-      <service-name>AlbumService</service-name>
-      <port-name>AlbumServiceSoap</port-name>
-      <package-name>cejv659.concordia.ca</package-name>
+  </services>
+  <clients>
+    <client name="albums">
+      <wsdl-url>file:/E:/STUDIES/WEB%20Services/_PROJECT/XS_PROJECT/files/albums.wsdl</wsdl-url>
+      <local-wsdl-file>albums.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">xs.project.brendan.service</package-name>
       <catalog-file>catalog.xml</catalog-file>
-      <use-provider>true</use-provider>
       <wsimport-options>
         <wsimport-option>
           <wsimport-option-name>extension</wsimport-option-name>
@@ -24,6 +22,10 @@
           <wsimport-option-value>false</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>file:/E:/STUDIES/WEB%20Services/_PROJECT/XS_PROJECT/files/albums.wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
         </wsimport-option>
@@ -31,9 +33,12 @@
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
         </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>xs.project.brendan.service</wsimport-option-value>
+        </wsimport-option>
       </wsimport-options>
-    </service>
-  </services>
-  <clients/>
+    </client>
+  </clients>
   <jsr109>true</jsr109>
 </jax-ws>

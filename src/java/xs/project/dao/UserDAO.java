@@ -42,7 +42,9 @@ public class UserDAO extends ParentDAO {
             ResultSet resultSet = pStatement.executeQuery();
 
             if (resultSet.next()) {
-                User u = createUserFromResult(resultSet);
+                User u = new User();
+                u.setUser_id(resultSet.getInt("USER_ID"));
+                u.setEmail(resultSet.getString("EMAIL"));
                 return u;
             }
         } catch (Exception e) {
@@ -59,7 +61,10 @@ public class UserDAO extends ParentDAO {
             ResultSet resultSet = pStatement.executeQuery();
 
             if (resultSet.next()) {
-                User u = createUserFromResult(resultSet);
+               User u = new User();
+                u.setUser_id(resultSet.getInt("USER_ID"));
+                u.setEmail(resultSet.getString("EMAIL"));
+                u.setPassword(resultSet.getString("PASSWORD"));
                 return u;
             }
         } catch (Exception e) {

@@ -26,24 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-service-UpcService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/service/UpcService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/UpcService" destdir="${build.generated.dir}/jax-wsCache/service/UpcService" wsdl="${basedir}/${conf-dir}xml-resources/web-services/UpcService/wsdl/webservices.brendanwood.me/AlbumService.asmx.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-services/UpcService/wsdl/webservices.brendanwood.me/AlbumService.asmx.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/service/UpcService"/>
+    <target name="wsimport-client-albums" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/albums"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/albums" destdir="${build.generated.dir}/jax-wsCache/albums" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/albums/wsdl/albums.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="file:/E:/STUDIES/WEB%20Services/_PROJECT/XS_PROJECT/files/albums.wsdl" xnocompile="true" xendorsed="true" package="xs.project.brendan.service">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/albums/wsdl/albums.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/albums"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/service/UpcService">
+            <fileset dir="${build.generated.dir}/jax-wsCache/albums">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
-        <copy todir="${build.web.dir}/WEB-INF/wsdl/UpcService">
-            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/UpcService/wsdl/"/>
-        </copy>
     </target>
-    <target name="wsimport-service-clean-UpcService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/cejv659/concordia/ca"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/service/UpcService"/>
+    <target name="wsimport-client-clean-albums" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/xs/project/brendan/service"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/albums"/>
     </target>
-    <target name="wsimport-service-generate" depends="wsimport-service-UpcService"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-albums"/>
 </project>

@@ -259,15 +259,17 @@ public class AlbumsDAO extends ParentDAO {
     public int countAlbumsByUserIdChoiceActive(int u, boolean active) {
         try (Connection connection = DriverManager.getConnection(url, user, password);) {
 
-            PreparedStatement pStatement = connection.prepareStatement(countAlbumsByUserIdChoiceActive);
+            PreparedStatement pStatement = connection.prepareStatement(countAlbumsByUserId);
             pStatement.setInt(1, u);
             pStatement.setBoolean(2, active);
 
             ResultSet resultSet = pStatement.executeQuery();
 
             if (resultSet.next()) {
-                return resultSet.getInt(u);
+                return resultSet.getInt(1);
             }
+        } catch (SQLException ex) {
+            
         } catch (Exception e) {
             System.out.println(e);
         }
