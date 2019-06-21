@@ -7,14 +7,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import xs.project.entities.User;
+import xs.project.exceptions.Exception500;
+import xs.project.exceptions.Exception404;
+import static xs.project.validators.BeanValidation.validateUser;
+import static xs.project.validators.QueryValidation.checkExistUsers;
+import static xs.project.validators.QueryValidation.validateEmail;
+import static xs.project.validators.QueryValidation.validateUserId;
 
 /**
- *
- * @author admin
+ * DAO class for User entity
+ * 
+ * @author saukin/xavier
  */
 public class UserDAO extends ParentDAO {
-    
-    public User createUser(User u) throws SQLException {
+
+    /**
+     *
+     * @param u - User object that keeps data to create new user in DB
+     * @return - created User object
+     * @throws SQLException
+     * @throws Exception500
+     * @throws Exception404
+     */
+    public User createUser(User u) throws SQLException, Exception500, Exception404 {
+        UserDAO ud = new UserDAO();
+        if (!validateUser(u) && (ud.getUserByEmail(u.getEmail()) == null)) {
+            throw new Exception500("invalid User value");
+        }
+        
         try (Connection connection = DriverManager.getConnection(url, user, password);) 
         {
 
@@ -34,7 +54,22 @@ public class UserDAO extends ParentDAO {
         }
     }
     
-    public User getUserById(int userId) {
+    /**
+     *
+     * @param userId - user Id from DB
+     * @return - User object selected by Id
+     * @throws Exception404
+     */
+    public User getUserById(int userId) throws Exception404 {
+        
+        if (!validateUserId(userId)) {
+            throw new Exception404("userId is out of range"); 
+        }
+        
+        if (checkExistUsers() < userId) {
+            throw new Exception404("no such a userId"); 
+        }
+        
         try (Connection connection = DriverManager.getConnection(url, user, password);) {
 
             PreparedStatement pStatement = connection.prepareStatement(getUserByIdQuery);
@@ -53,7 +88,18 @@ public class UserDAO extends ParentDAO {
         return null;
     }
     
-    public User getUserByEmail(String email) {
+    /**
+     *
+     * @param email - user email from DB
+     * @return User object selected by email
+     * @throws Exception404
+     */
+    public User getUserByEmail(String email) throws Exception404 {
+        
+        if (!validateEmail(email) ) {
+            throw new Exception404("no such email"); 
+        }
+        
         try (Connection connection = DriverManager.getConnection(url, user, password);) {
 
             PreparedStatement pStatement = connection.prepareStatement(getUserByEmailQuery);
@@ -72,4 +118,5 @@ public class UserDAO extends ParentDAO {
         }
         return null;
     }
+    
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package xs.project.services;
 
 import java.util.List;
@@ -18,9 +14,9 @@ import javax.ws.rs.core.MediaType;
 import xs.project.brendan.service.Album;
 
 /**
- * REST Web Service
+ * REST Web Service maden from Brendan Wood wsdl
  *
- * @author admin
+ * @author saukin
  */
 @Path("BrendanService")
 public class BrendanService {
@@ -36,8 +32,8 @@ public class BrendanService {
 
     /**
      * Retrieves representation of an instance of xs.project.services.BrendanService
-     * @param upc
-     * @return an instance of java.lang.String
+     * @param upc - upc code from DB
+     * @return an object of type Album (the one from Brendan Wood Service)
      */
     @Path("/{upc}")
     @GET
@@ -49,7 +45,10 @@ public class BrendanService {
         return port.getAlbumData(upc);
     }
 
-    
+    /**
+     *
+     * @return String with up_codes available in Brendan Wood Service
+     */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String instructions() {

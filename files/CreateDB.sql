@@ -19,8 +19,10 @@ PRIMARY KEY (USER_ID)
 );
 
 INSERT INTO APPUSERS (EMAIL, PASSWORD) values
-("SomeUser","Password01"),
-("SomeUser2","Password02");
+("User","Password"),
+("User2","Password"),
+("Name","name"),
+("Buddy","12345");
 
 
 DROP TABLE IF EXISTS APPALBUMS;
@@ -43,5 +45,6 @@ INSERT INTO APPALBUMS (ALBUM_NAME, UPC_CODE, PRESSING_YEAR, ARTIST_GROUP, CONDIT
 ("Peyote Dance","UPC2", 2019, "Soundwalk", "M+", "This album is a product of Soundwalk Collective and Patty Smith", 2, TRUE),
 ("Cest Com Com Complique","UPC3", 2009, "Faust", "M-", "", 1, TRUE),
 ("Piano Works IX","UPC4", 2009, "Joachim Kuhn", "M+", "Joachim Kuhn and Michael Wollny", 1, FALSE),
-("First Chapter","UPC5", 2013, "SomeGroup", "M", "Murcof & Philippe Petit. The best duo!!", 1, FALSE);
-
+("First Chapter","UPC5", 2013, "Murcof", "M", "Murcof & Philippe Petit. The best duo!!", 1, FALSE),
+("Third", "port", 2008, "Portishead", "VG", "good krautrock", 2, TRUE),
+("Last Resort", "trent", 2006, "Trentemoller", "G", "", 3, FALSE);
