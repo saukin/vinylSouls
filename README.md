@@ -10,9 +10,10 @@ API works with json messages.
 To launch this service do next:
 
 1. clone and open the project into your ide
-2. create a database using CreateDB.sql file (XS_Project/files)
-3. create a connection with database in your ide
-2. clean, build and deploy the project
+2. start payara server
+3. create a database using CreateDB.sql file (XS_Project/files)
+4. create a connection with database in your ide
+5. clean, build and deploy the project
 
 Any comments about the application and its implementations are very welcome!
 
