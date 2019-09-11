@@ -3,42 +3,6 @@
   <services>
   </services>
   <clients>
-    <client name="albums">
-      <wsdl-url>file:/E:/STUDIES/WEB%20Services/_PROJECT/XS_PROJECT/files/albums.wsdl</wsdl-url>
-      <local-wsdl-file>albums.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">xs.project.brendan.service</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>file:/E:/STUDIES/WEB%20Services/_PROJECT/XS_PROJECT/files/albums.wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>xs.project.brendan.service</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
   </clients>
   <jsr109>true</jsr109>
 </jax-ws>
