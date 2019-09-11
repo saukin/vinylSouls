@@ -34,7 +34,6 @@ public class ApplicationConfig extends Application {
         resources.add(ExceptionMappers.Exception404Mapper.class);
         resources.add(ExceptionMappers.Exception500Mapper.class);
         resources.add(ExceptionMappers.GenericExceptionMapper.class);
-        resources.add(xs.project.services.BrendanService.class);
         resources.add(xs.project.services.xs_webservice.class);
     }
     
